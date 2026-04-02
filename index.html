@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rheyrovi Gani | Finance & Accounting Portfolio</title>
+    
+    <!-- Google Fonts: Poppins for Headings, Inter for Body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES (PALET WARNA) --- */
+        :root {
+            --bg-cream: #F6F5F1;
+            --primary-sage: #6B8F71;
+            --primary-sage-hover: #58785D;
+            --text-charcoal: #333333;
+            --text-light: #666666;
+            --glass-bg: rgba(246, 245, 241, 0.75);
+            --white-card: #FFFFFF;
+        }
+
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Smooth Scrolling */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .nav-logo {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-charcoal);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- UTILITY CLASSES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-sage);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- STICKY NAVBAR (GLASSMORPHISM) --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--primary-sage);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-sage);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--primary-sage);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary-sage);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(107, 143, 113, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-sage-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(107, 143, 113, 0.4);
+            color: white;
+        }
+
+        /* --- ABOUT ME SECTION --- */
+        .about {
+            padding: 8rem 0;
+            background-color: white;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .highlight {
+            color: var(--primary-sage);
+            font-weight: 600;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .skill-pill {
+            background-color: var(--bg-cream);
+            color: var(--text-charcoal);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(107, 143, 113, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-pill:hover {
+            background-color: var(--primary-sage);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .stats-container {
+            display: flex;
+            gap: 4rem;
+            margin-top: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-charcoal);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        /* --- ACHIEVEMENTS SECTION (GRID) --- */
+        .achievements {
+            padding: 8rem 0;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--white-card);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Card Hover Effects */
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            border-color: rgba(107, 143, 113, 0.2);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--primary-sage);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.1);
+        }
+
+        .card-year {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            flex-grow: 1;
+        }
+
+        /* --- EXPERIENCE & LEADERSHIP SECTION --- */
+        .experience {
+            padding: 8rem 0;
+            background-color: white;
+        }
+
+        .timeline {
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--bg-cream);
+            color: var(--primary-sage);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            z-index: 2;
+        }
+
+        .timeline-content {
+            background-color: var(--bg-cream);
+            padding: 2rem;
+            border-radius: 12px;
+            flex-grow: 1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        .timeline-role {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-charcoal);
+        }
+
+        .timeline-org {
+            color: var(--primary-sage);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* --- FOOTER / CONTACT --- */
+        footer {
+            padding: 4rem 5%;
+            text-align: center;
+            background-color: var(--text-charcoal);
+            color: white;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-desc {
+            color: #A0A0A0;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            color: #D0D0D0;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background-color: var(--primary-sage);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: #A0A0A0;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media screen and (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .stats-container {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .timeline-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .timeline-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="nav-logo">RG.</div>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#experience">Experience</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero container animate-fade-in">
+        <p class="hero-subtitle">6th-Semester Business Admin Undergraduate @ Universitas Brawijaya</p>
+        <h1 class="hero-title">Rheyrovi Gani</h1>
+        <p class="hero-tagline">"Turning Logic into Actionable Foresight"</p>
+        <a href="#achievements" class="btn-primary">
+            View My Work <i class="fa-solid fa-arrow-down" style="margin-left: 8px;"></i>
+        </a>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about">
+        <div class="container about-content">
+            <h2 class="section-title">About Me</h2>
+            <p class="about-text">
+                I am an analytical <span class="highlight">Business Administration</span> undergraduate bridging operational accounting precision with corporate finance strategy. Highly proficient in advanced Excel modeling, accounting softwares, and complex bank reconciliations. Adept at evaluating critical valuation metrics, including <span class="highlight">Cost of Capital and ROE/ROA</span>. I am fueled by a relentless curiosity for financial markets and continuous learning.
+            </p>
+            
+            <!-- SKILLS PILLS -->
+            <div class="skills-container">
+                <span class="skill-pill">Investment Analysis</span>
+                <span class="skill-pill">Excel Financial Modeling</span>
+                <span class="skill-pill">Accurate & Zahir</span>
+                <span class="skill-pill">R & SPSS</span>
+                <span class="skill-pill">Cost of Capital (WACC)</span>
+                <span class="skill-pill">Asset Management</span>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">3.78</div>
+                    <div class="stat-label">Cumulative GPA</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">119</div>
+                    <div class="stat-label">Credits Taken</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Feb '26</div>
+                    <div class="stat-label">Ms. Office Certified</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section id="achievements" class="achievements container">
+        <h2 class="section-title">Notable Achievements</h2>
+        
+        <div class="grid-cards">
+            <!-- Card 1 -->
+            <div class="card">
+                <i class="fa-solid fa-medal card-icon"></i>
+                <span class="card-year">2025</span>
+                <h3 class="card-title">Gold Medal of AVISOC 2025</h3>
+                <p class="card-desc">Awarded in the Opinion Category for proposing the transformation of ACFTA 3.0 into a pioneering climate-smart trade architecture, integrating digital and green economies for MSMEs.</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <i class="fa-brands fa-hive card-icon"></i>
+                <span class="card-year">2025</span>
+                <h3 class="card-title">Semifinalist Ganesha Business Management Festival</h3>
+                <p class="card-desc">Co-developed "Finverse," a Web3-based smart banking concept for SeaBank. Integrated a DAO hub and crypto wallet with financial projections yielding a 30% IRR.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <i class="fa-solid fa-scale-balanced card-icon"></i>
+                <span class="card-year">2024</span>
+                <h3 class="card-title">2nd Winner of Tuan Puan Berkiprah</h3>
+                <p class="card-desc">Secured 2nd Place in the Case Resolved category. Provided actionable, comprehensive frameworks to dismantle double standards and empower female leadership.</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <i class="fa-solid fa-people-group card-icon"></i>
+                <span class="card-year">2025</span>
+                <h3 class="card-title">Project Director for 150+ Participants</h3>
+                <p class="card-desc">Directed the execution of two national mega-projects, "School of CEO" and "Innovators League," ensuring high-quality submissions and massive nationwide engagement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Professional & Organizational Experience</h2>
+            
+            <div class="timeline">
+                <!-- Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fa-solid fa-chess-knight"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-role">Head of Achievement Strategist</h3>
+                        <p class="timeline-org">Student Entrepreneur Center FIA UB | Jan 2025 – Dec 2025</p>
+                        <p class="timeline-desc">Spearheaded an entrepreneurial skill-building platform focusing on business plans, resulting in over 10 award-winning projects. Surpassed organizational targets by achieving 109% of KPIs and organized expert-led training sessions that helped 20 students secure awards in prestigious competitions.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-role">Vice Project Officer of Procurement</h3>
+                        <p class="timeline-org">ShARE UB | Mar 2025 – Jul 2025</p>
+                        <p class="timeline-desc">Coordinated comprehensive event logistics and technical operations—including venue management and OBS broadcasting—for the international "Malang Globe IBCC 2025" attended by delegates from 5+ Asian countries, achieving high satisfaction from over 60 on-site attendees.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / CONTACT SECTION -->
+    <footer id="contact">
+        <div class="footer-content">
+            <h2 class="footer-title">Let's Connect</h2>
+            <p class="footer-desc">Positioned to translate intricate data into precise reporting and strategic solutions. Open for professional collaborations and opportunities.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i> +62 88216776319
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i> ganirheyrovi@gmail.com
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://linkedin.com/in/rheyroviganii" target="_blank" class="social-btn" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Malang, East Java 65145, Indonesia</span>
+                </div>
+                <p>&copy; 2026 Rheyrovi Athariq Muhammad Gani. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
